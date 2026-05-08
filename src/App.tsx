@@ -33,17 +33,23 @@ function App() {
     });
   }, []);
 
-  // Filter courses based on selected role
+  // Filter and sort courses based on selected role
   const filteredCourses = useMemo(() => {
     if (selectedRole === 'all') {
       return coursesWithRoles;
     }
 
-    return coursesWithRoles.filter((course) => {
-      return (
+    const relevant = coursesWithRoles.filter(
+      (course) =>
         course.mandatory.includes(selectedRole) ||
         course.recommended.includes(selectedRole)
-      );
+    );
+
+    // mandatory courses first
+    return [...relevant].sort((a, b) => {
+      const aM = a.mandatory.includes(selectedRole) ? 0 : 1;
+      const bM = b.mandatory.includes(selectedRole) ? 0 : 1;
+      return aM - bM;
     });
   }, [coursesWithRoles, selectedRole]);
 
@@ -63,7 +69,7 @@ function App() {
 
         <div className="course-grid">
           {filteredCourses.map((course) => (
-            <CourseCard key={course.id} course={course} />
+            <CourseCard key={course.id} course={course} selectedRole={selectedRole} />
           ))}
         </div>
 

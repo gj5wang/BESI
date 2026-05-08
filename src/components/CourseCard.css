@@ -1,0 +1,57 @@
+.course-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.course-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.course-name {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.requirement-section {
+  margin-bottom: 12px;
+}
+
+.requirement-section:last-child {
+  margin-bottom: 0;
+}
+
+.requirement-header {
+  margin-bottom: 6px;
+}
+
+.requirement-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.requirement-header.mandatory .requirement-badge {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.requirement-header.recommended .requirement-badge {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.role-list {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+}

@@ -1,122 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useMemo } from 'react';
+import trainingData from './data/training-matrix.json';
+import { TrainingData, CourseWithRoles } from './types';
+import CourseCard from './components/CourseCard';
+import RoleFilter from './components/RoleFilter';
+import './App.css';
+
+const data = trainingData as TrainingData;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedRole, setSelectedRole] = useState<string>('all');
+
+  // Transform courses to include which roles need them
+  const coursesWithRoles: CourseWithRoles[] = useMemo(() => {
+    return data.courses.map((course) => {
+      const mandatory: string[] = [];
+      const recommended: string[] = [];
+
+      data.roles.forEach((role) => {
+        const requirement = role.requirements[course.name];
+        if (requirement === 'mandatory') {
+          mandatory.push(role.name);
+        } else if (requirement === 'recommended') {
+          recommended.push(role.name);
+        }
+      });
+
+      return {
+        ...course,
+        mandatory,
+        recommended,
+      };
+    });
+  }, []);
+
+  // Filter courses based on selected role
+  const filteredCourses = useMemo(() => {
+    if (selectedRole === 'all') {
+      return coursesWithRoles;
+    }
+
+    return coursesWithRoles.filter((course) => {
+      return (
+        course.mandatory.includes(selectedRole) ||
+        course.recommended.includes(selectedRole)
+      );
+    });
+  }, [coursesWithRoles, selectedRole]);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <header className="app-header">
+        <h1>BESI Training Portal</h1>
+        <p className="subtitle">Health and Safety Course Catalog</p>
+      </header>
 
-      <div className="ticks"></div>
+      <main className="app-main">
+        <RoleFilter
+          roles={data.roles}
+          selectedRole={selectedRole}
+          onRoleChange={setSelectedRole}
+        />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        <div className="course-grid">
+          {filteredCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        {filteredCourses.length === 0 && (
+          <p className="no-results">No courses found for this role.</p>
+        )}
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;

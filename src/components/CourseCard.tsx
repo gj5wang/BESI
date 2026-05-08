@@ -1,4 +1,4 @@
-import { CourseWithRoles } from '../types';
+import type { CourseWithRoles } from '../types';
 import './CourseCard.css';
 
 interface CourseCardProps {

@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
-import trainingData from './data/training-matrix.json';
-import { TrainingData, CourseWithRoles } from './types';
+import trainingData from './data/training_matrix.json';
+import type { TrainingData, CourseWithRoles } from './types';
 import CourseCard from './components/CourseCard';
 import RoleFilter from './components/RoleFilter';
 import './App.css';

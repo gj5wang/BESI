@@ -1,0 +1,156 @@
+{
+  "source": "BESi-Health and Safety Training Matrix.xlsx (Yan Fikh, 2026-02-25)",
+  "parsedAt": "2026-05-03",
+  "legend": {
+    "mandatory": "Required for this role. Worker cannot perform role without this training.",
+    "recommended": "Suggested but not strictly required.",
+    "unset": "Not applicable to this role."
+  },
+  "notes": [
+    "\"Equipment Training\" is a single bucket in the source matrix that lumps all 5 specialty courses (Forklift, AWP, Hoisting & Rigging, Skid Steer, 0-8 Ton Mobile Crane). Per-equipment role mapping is still TBD with the client.",
+    "Source spreadsheet uses cell colour, not text, to encode requirements. Mandatory was peach (#F9756B), recommended was pale cyan (#B4FAF8).",
+    "Source had two header typos (\"Workign At Heights\", \"Worker Awareness in 4 Stpes\") which we corrected here."
+  ],
+  "courses": [
+    { "id": 1, "name": "WHMIS", "rawHeader": "WHMIS" },
+    { "id": 2, "name": "Supervisor Awareness in 5 Steps", "rawHeader": "Supervisor Awareness in 5 Steps" },
+    { "id": 3, "name": "Working at Heights", "rawHeader": "Workign At Heights" },
+    { "id": 4, "name": "Worker Awareness in 4 Steps", "rawHeader": "Worker Awareness in 4 Stpes" },
+    { "id": 5, "name": "AODA", "rawHeader": "AODA" },
+    { "id": 6, "name": "Workplace Harassment", "rawHeader": "Workplace Harassment" },
+    { "id": 7, "name": "First Aid & CPR", "rawHeader": "First Aid & CPR" },
+    { "id": 8, "name": "H&S Manual", "rawHeader": "H&S Manual" },
+    { "id": 9, "name": "SWP/SJP", "rawHeader": "SWP/SJP" },
+    { "id": 10, "name": "JHA", "rawHeader": "JHA" },
+    { "id": 11, "name": "Equipment Training", "rawHeader": "Equipment Training" },
+    { "id": 12, "name": "COR Training", "rawHeader": "COR Training" }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "name": "CEO",
+      "requirements": {
+        "WHMIS": "mandatory",
+        "Supervisor Awareness in 5 Steps": "mandatory",
+        "Working at Heights": "mandatory",
+        "Worker Awareness in 4 Steps": "recommended",
+        "AODA": "mandatory",
+        "Workplace Harassment": "mandatory",
+        "First Aid & CPR": "recommended",
+        "H&S Manual": "mandatory",
+        "SWP/SJP": "mandatory",
+        "JHA": "mandatory",
+        "Equipment Training": "recommended",
+        "COR Training": "mandatory"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Vice President",
+      "requirements": {
+        "WHMIS": "mandatory",
+        "Supervisor Awareness in 5 Steps": "mandatory",
+        "Working at Heights": "recommended",
+        "Worker Awareness in 4 Steps": "recommended",
+        "AODA": "mandatory",
+        "Workplace Harassment": "mandatory",
+        "First Aid & CPR": "recommended",
+        "H&S Manual": "mandatory",
+        "SWP/SJP": "mandatory",
+        "JHA": "mandatory",
+        "Equipment Training": "recommended",
+        "COR Training": "recommended"
+      }
+    },
+    {
+      "id": 3,
+      "name": "H&S Department",
+      "requirements": {
+        "WHMIS": "mandatory",
+        "Supervisor Awareness in 5 Steps": "mandatory",
+        "Working at Heights": "mandatory",
+        "Worker Awareness in 4 Steps": "recommended",
+        "AODA": "mandatory",
+        "Workplace Harassment": "mandatory",
+        "First Aid & CPR": "mandatory",
+        "H&S Manual": "mandatory",
+        "SWP/SJP": "mandatory",
+        "JHA": "mandatory",
+        "Equipment Training": "mandatory",
+        "COR Training": "mandatory"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Construction Manager",
+      "requirements": {
+        "WHMIS": "mandatory",
+        "Supervisor Awareness in 5 Steps": "mandatory",
+        "Working at Heights": "mandatory",
+        "Worker Awareness in 4 Steps": "recommended",
+        "AODA": "mandatory",
+        "Workplace Harassment": "mandatory",
+        "First Aid & CPR": "recommended",
+        "H&S Manual": "mandatory",
+        "SWP/SJP": "mandatory",
+        "JHA": "mandatory",
+        "Equipment Training": "mandatory",
+        "COR Training": "recommended"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Field Operations Superintendent",
+      "requirements": {
+        "WHMIS": "mandatory",
+        "Supervisor Awareness in 5 Steps": "mandatory",
+        "Working at Heights": "mandatory",
+        "Worker Awareness in 4 Steps": "recommended",
+        "AODA": "mandatory",
+        "Workplace Harassment": "mandatory",
+        "First Aid & CPR": "recommended",
+        "H&S Manual": "mandatory",
+        "SWP/SJP": "mandatory",
+        "JHA": "mandatory",
+        "Equipment Training": "mandatory",
+        "COR Training": "recommended"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Foreman",
+      "requirements": {
+        "WHMIS": "mandatory",
+        "Supervisor Awareness in 5 Steps": "mandatory",
+        "Working at Heights": "mandatory",
+        "Worker Awareness in 4 Steps": "recommended",
+        "AODA": "mandatory",
+        "Workplace Harassment": "mandatory",
+        "First Aid & CPR": "mandatory",
+        "H&S Manual": "mandatory",
+        "SWP/SJP": "mandatory",
+        "JHA": "mandatory",
+        "Equipment Training": "mandatory",
+        "COR Training": "recommended"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Installers/Labour Crews",
+      "requirements": {
+        "WHMIS": "mandatory",
+        "Supervisor Awareness in 5 Steps": "recommended",
+        "Working at Heights": "mandatory",
+        "Worker Awareness in 4 Steps": "mandatory",
+        "AODA": "mandatory",
+        "Workplace Harassment": "mandatory",
+        "First Aid & CPR": "recommended",
+        "H&S Manual": "mandatory",
+        "SWP/SJP": "mandatory",
+        "JHA": "mandatory",
+        "Equipment Training": "mandatory",
+        "COR Training": "recommended"
+      }
+    }
+  ]
+}
